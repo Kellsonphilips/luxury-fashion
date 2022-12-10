@@ -38,10 +38,16 @@ const categories = [
 const Directory = () => {
 
   return (
-    <div className="directory-container">
-      {categories.map((category) => (
-        <DirectoryItem key={category.id} items={category} />
-      ))}
+    <div>
+      <div className="welcome-container">
+        <h2>Welcome to Luxury Fashion</h2>
+        <div className="slog-container">We offer you the best amongst the rest!</div>
+      </div>
+      <div className="directory-container">
+        {categories.map((category) => (
+          <DirectoryItem key={category.id} items={category} />
+        ))}
+      </div>
     </div>
   );
 };
