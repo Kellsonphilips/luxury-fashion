@@ -64,13 +64,16 @@ export const getCollectionAndDocuments = async () => {
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
-    const categoryMap = querySnapshot.docs.reduce((accumulator, docSnapshot) => {
-        const { title, items } = docSnapshot.data();
-        accumulator[title.toLowerCase()] = items;
-        return accumulator;
-    }, {});
+    // using redux standard/partern moving commented out code to products selector 
+    return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+    
+    // const categoryMap = querySnapshot.docs.reduce((accumulator, docSnapshot) => {
+    //     const { title, items } = docSnapshot.data();
+    //     accumulator[title.toLowerCase()] = items;
+    //     return accumulator;
+    // }, {});
 
-    return categoryMap;
+    // return categoryMap;
 }
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
