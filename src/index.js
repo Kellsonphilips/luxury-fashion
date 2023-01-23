@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from 'react-router-dom';
 // import { UserProvider } from './contexts/user.context';
-import { ProductsProvider } from './contexts/products.context';
-import { CartProvider } from './contexts/cart.context';
+// import { ProductsProvider } from './contexts/products.context';
+// import { CartProvider } from './contexts/cart.context';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import App from "./App";
@@ -18,11 +18,11 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         {/* <UserProvider> */}
-          <ProductsProvider>
-            <CartProvider>
+          {/* <ProductsProvider> */}
+            {/* <CartProvider> */}
               <App />
-            </CartProvider>
-          </ProductsProvider>
+            {/* </CartProvider> */}
+          {/* </ProductsProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
     </Provider>
