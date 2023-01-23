@@ -56,8 +56,10 @@ export const CartContext = createContext({
 
 // modifying the  cart context to use reducer and not useState
 export const CART_ACTION_TYPES = {
-  SET_CART_ITEMS: "SET_CART_ITEMS",
   SET_IS_CART_OPEN: "SET_IS_CART_OPEN",
+  SET_CART_ITEMS: "SET_CART_ITEMS",
+  SET_CART_COUNT: "SET_CART_COUNT",
+  SET_CART_TOTAL: "SET_CART_TOTAL",
 };
 
 const INITIAL_STATE = {
@@ -144,13 +146,13 @@ export const CartProvider = ({ children }) => {
     updateCartItemsReducer(newCartItems);
   };
 
-  const removeItemFromcart = (productToRemove) => {
+  const removeItemFromCart = (productToRemove) => {
     // setCartItems(removeCartItem(cartItems, productToRemove));
     const newCartItems = removeCartItem(cartItems, productToRemove);
     updateCartItemsReducer(newCartItems);
   };
 
-  const removeFromcart = (itemToRemove) => {
+  const removeFromCart = (itemToRemove) => {
     //  setCartItems(removeInCart(cartItems, itemToRemove));
     const newCartItems = removeInCart(cartItems, itemToRemove);
     updateCartItemsReducer(newCartItems);
@@ -160,8 +162,8 @@ export const CartProvider = ({ children }) => {
     isCartOpen,
     setIsCartOpen,
     addItemToCart,
-    removeItemFromcart,
-    removeFromcart,
+    removeItemFromCart,
+    removeFromCart,
     cartItems,
     cartCount,
     cartTotal,
