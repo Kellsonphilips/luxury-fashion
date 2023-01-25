@@ -6,7 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 // import { ProductsProvider } from './contexts/products.context';
 // import { CartProvider } from './contexts/cart.context';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store/store';
 import App from "./App";
 import './index.scss';
 
@@ -16,15 +17,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        {/* <UserProvider> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          {/* <UserProvider> */}
           {/* <ProductsProvider> */}
-            {/* <CartProvider> */}
-              <App />
-            {/* </CartProvider> */}
+          {/* <CartProvider> */}
+          <App />
+          {/* </CartProvider> */}
           {/* </ProductsProvider> */}
-        {/* </UserProvider> */}
-      </BrowserRouter>
+          {/* </UserProvider> */}
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
