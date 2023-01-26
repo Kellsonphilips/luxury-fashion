@@ -61,9 +61,10 @@ export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
 
 export const getCollectionAndDocuments = async () => {
     const collectionRef = collection(db, "categories");
-    const q = query(collectionRef);
+    const newQuery = query(collectionRef);
 
-    const querySnapshot = await getDocs(q);
+    // await Promise.reject(new Error("oops there's a new error"));
+    const querySnapshot = await getDocs(newQuery);
     // using redux standard/partern moving commented out code to products selector 
     return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
     

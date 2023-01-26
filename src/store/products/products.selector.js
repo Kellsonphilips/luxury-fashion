@@ -20,6 +20,11 @@ export const selectProdutsMap = createSelector(
   }, {})
 );
 
+export const selectProductsIsLoading = createSelector(
+  [selectProdutReducer],
+  (productsSlice) => productsSlice.isLoading
+);
+
 // without memoization
 
 // export const selectProdutsMap = (state) => {
