@@ -2,9 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import CategoriesPreview from "../categories-preview/categories-preview.component";
-import Category from "../category/category";
-import { getCollectionAndDocuments } from "../../utility/firebase/firebase";
-import { setProducts } from "../../store/products/products.action"; 
+import Category from "../category/category.component";
+// import { getCollectionAndDocuments } from "../../utility/firebase/firebase";
+// import { setProducts } from "../../store/products/products.action"; 
+import { fetchProductsAsync } from "../../store/products/products.action";
 import "./shop.styles.scss";
 
 
@@ -13,12 +14,15 @@ const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getCategoriesMap = async () => {
-      const productsArray = await getCollectionAndDocuments();
-      dispatch(setProducts(productsArray));
-    };
+    // to use our created thunk here and moved all async loads to product action using redux-thunk
+    dispatch(fetchProductsAsync());
+    
+    // const getCategoriesMap = async () => {
+    //   const productsArray = await getCollectionAndDocuments("categories");
+    //   dispatch(setProducts(productsArray));
+    // };
 
-    getCategoriesMap();
+    // getCategoriesMap();
   }, [dispatch]);
 
   return (
