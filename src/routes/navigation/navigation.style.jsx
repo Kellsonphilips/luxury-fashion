@@ -17,7 +17,7 @@ export const NavigationContainer = styled.div`
 
 export const LogoContainer = styled(Link)`
   height: 100%;
-  width: 70px;
+  width: 80px;
   padding: 25px;
 `;
 
@@ -32,7 +32,12 @@ export const NavLinks = styled.div`
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
-`
+
+  @media screen and (max-width: 767px) {
+    font-size: 2.5vw;
+    padding: 2vw 2vw
+  }
+`;
 
 // .navigation {
 //   height: 70px;
