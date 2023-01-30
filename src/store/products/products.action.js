@@ -17,7 +17,8 @@ export const fetchProductsFailed = (error) =>
   createAction(PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_FAILED, error);
 
 // this is how you create your thunk
-
+// stopped using thunk as we now use saga , this logic is replicated in products.saga.js
+// and exporting fetchProductsStart directly to shop component instead of fetchProductsAsync
 export const fetchProductsAsync = () => async (dispatch) => {
   dispatch(fetchProductsStart());
 
