@@ -1,14 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import { setCurrentUser } from "./store/user/user.action";
+// import { setCurrentUser } from "./store/user/user.action";
+import { checkUserSession } from "./store/user/user.action";
 import { useDispatch } from "react-redux";
-import {
-  onAuthStateChangedListener,
-  createUserDocumentFromAuth,
-} from "./utility/firebase/firebase";
+// import {
+  // onAuthStateChangedListener,
+  // createUserDocumentFromAuth,
+  // getCurrentUser,
+// } from "./utility/firebase/firebase";
 
 import Home from "./routes/home/home";
-import Navigation from "./routes/navigation/navigation";
+import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication";
 import Shop from "./routes/shop/shop";
 import Contact from "./routes/contact/contact";
@@ -20,14 +22,19 @@ import "./categories.scss"
 const App = () => {
   const dispatch = useDispatch();
 
+  // our asynchronous code for user now lives in firebase utils to free up our component
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChangedListener((user) => {
+  //     if (user) {
+  //       createUserDocumentFromAuth(user);
+  //     }
+  //     dispatch(setCurrentUser(user));
+  //   });
+  //   return unsubscribe;
+  // }, [dispatch]);
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
+    dispatch(checkUserSession());
   }, [dispatch]);
 
   return (

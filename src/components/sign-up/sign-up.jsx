@@ -1,9 +1,11 @@
 
 import { useState } from "react";
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-} from "../../utility/firebase/firebase";
+// import {
+  // createAuthUserWithEmailAndPassword,
+  // createUserDocumentFromAuth,
+// } from "../../utility/firebase/firebase";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 import FormInput from "../form-input/form-input";
 import Button from "../button/button";
 import "./sign-up.styles.scss"
@@ -22,6 +24,7 @@ const SingUpForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
 
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -46,12 +49,15 @@ const SingUpForm = () => {
       if (password !== confirmPassword) {
         setErrorMessage("Your passwords do not match! Check password and try again.");
       }else {
-        const { user } = await createAuthUserWithEmailAndPassword(
-          email,
-          password
-        );
+        // const { user } = await createAuthUserWithEmailAndPassword(
+        //   email,
+        //   password
+        // );
         
-        await createUserDocumentFromAuth(user, { displayName });
+        // await createUserDocumentFromAuth(user, { displayName });
+        
+        // using our action from user saga
+        dispatch(signUpStart(email, password, displayName));
         resetFormField();
       }
     } catch (error) {

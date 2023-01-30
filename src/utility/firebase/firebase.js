@@ -98,7 +98,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
             console.log("There was an error creating user.", error.message);
         }
     }
-    return userDocRef;
+    return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -116,3 +116,17 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+
+// making our current user state more asynchronous to be used in our App.js
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    )
+  })
+};

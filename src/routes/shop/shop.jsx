@@ -5,7 +5,8 @@ import CategoriesPreview from "../categories-preview/categories-preview.componen
 import Category from "../category/category.component";
 // import { getCollectionAndDocuments } from "../../utility/firebase/firebase";
 // import { setProducts } from "../../store/products/products.action"; 
-import { fetchProductsAsync } from "../../store/products/products.action";
+// import { fetchProductsAsync } from "../../store/products/products.action"; 
+import { fetchProductsStart } from "../../store/products/products.action"; 
 import "./shop.styles.scss";
 
 
@@ -15,7 +16,7 @@ const Shop = () => {
 
   useEffect(() => {
     // to use our created thunk here and moved all async loads to product action using redux-thunk
-    dispatch(fetchProductsAsync());
+    dispatch(fetchProductsStart());
     
     // const getCategoriesMap = async () => {
     //   const productsArray = await getCollectionAndDocuments("categories");
