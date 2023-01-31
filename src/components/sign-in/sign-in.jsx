@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormInput from "../form-input/form-input";
-import Button, { BUTTON_TYPE_CLASS } from "../button/button";
+import Button, { BUTTON_TYPE_CLASS } from "../button/button.component";
 // import {
   // signInWithGooglePopup,
   // signInAuthUserWithEmailAndPassword,
