@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 // import { CartContext } from "../../contexts/cart.context";
 // import { signOutUser } from "../../utility/firebase/firebase"; 
 import CartIcon from "../../components/cart-icon/cart-icon";
-import CartDropdown from "../../components/cart-dropdown/cat-dropdown";
+import CartDropdown from "../../components/cart-dropdown/cat-dropdown.component";
 import { useSelector, useDispatch } from "react-redux";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import { selectCurrentUser } from "../../store/user/user.selector";

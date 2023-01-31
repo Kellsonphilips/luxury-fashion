@@ -3,6 +3,7 @@
 import { useSelector } from "react-redux";
 import { selectCartItems, selectCartTotal } from "../../store/cart/cart.selector";
 import CheckOutItem from "../../components/checkout-item/checkout-item";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 import "./checkout.styles.scss";
 
 
@@ -31,10 +32,15 @@ const CheckOut = () => {
           <span>Remove</span>
         </div>
       </div>
-      {cartItems.length ? cartItems.map((cartItem) => (
-        <CheckOutItem key={cartItem.id} cartItem={cartItem} />
-      )) : (<span className="empty-cart">Your cart is empty 🥹</span>)}
+      {cartItems.length ? (
+        cartItems.map((cartItem) => (
+          <CheckOutItem key={cartItem.id} cartItem={cartItem} />
+        ))
+      ) : (
+        <span className="empty-cart">Your cart is empty 🥹</span>
+      )}
       <span className="total">Total: ${cartTotal}</span>
+      <PaymentForm />
     </div>
   );
 }
